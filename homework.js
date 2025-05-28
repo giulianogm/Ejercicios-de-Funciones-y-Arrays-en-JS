@@ -238,6 +238,10 @@ function pasarUsuarioAPremium(usuarios) {
   // Define cada propiedad "esPremium" de cada objeto como "true"
   // Devuelve el array de usuarios
   // Tu código:
+  for (let i=0;i<usuarios.length;i++){
+    usuarios[i].esPremium = true;
+  }
+  return usuarios;
 }
 
 function sumarLikesDeUsuario(usuario) {
@@ -247,6 +251,11 @@ function sumarLikesDeUsuario(usuario) {
   // Suma todos los likes de todos los objetos "post"
   // Devuelve la suma
   // Tu código:
+  let suma = 0;
+  for (let i = 0; i < usuario.posts.length; i++) {
+    suma = suma + usuario.posts[i].likes;
+  }
+  return suma;
 }
 
 function agregarMetodoCalculoDescuento(producto) {
@@ -265,23 +274,37 @@ function agregarMetodoCalculoDescuento(producto) {
 
 function invocarCallback(cb) {
   // Invoca al callback `cb`
+  cb();
 }
 
 function sumarArray(numeros, cb) {
   // Suma todos los números enteros (int/integers) de un array ("numeros")
   // Pasa el resultado a `cb`
   // No es necesario devolver nada
+  let suma = 0;
+  for (let i = 0;i<numeros.length;i++){
+    suma = suma + numeros[i];
+  }
+  cb(suma);
 }
 
 function forEach(array, cb) {
   // Itera sobre la matriz "array" y pasa los valores al callback uno por uno
   // Pista: Estarás invocando a `cb` varias veces (una por cada valor en la matriz)
+  for (i=0;i<array.length;i++){
+    cb(array[i]);
+  }
 }
 
 function map(array, cb) {
   // Crea un nuevo array
   // Itera sobre cada valor en "array", pásalo a `cb` y luego ubicar el valor devuelto por `cb` en un nuevo array
   // El nuevo array debe tener la misma longitud que el array del argumento
+  let nuevoarray = [];
+  for (let i=0;i<array.length;i++){
+    nuevoarray.push(cb(array[i]));
+  }
+  return nuevoarray;
 }
 
 // No modificar nada debajo de esta línea
